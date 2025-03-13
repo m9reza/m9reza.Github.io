@@ -3,38 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First GitHub.io Page</title>
+    <title>Data Scientist Portfolio</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f0f0f0;
+        * {
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
-        h1 {
+        body {
+            line-height: 1.6;
             color: #333;
+            background-color: #f4f4f4;
         }
-        p {
-            font-size: 18px;
-            color: #666;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #007bff;
+        /* Header */
+        header {
+            position: relative;
+            height: 400px;
+            background: url('https://via.placeholder.com/1200x400?text=Data+Science+Header') no-repeat center/cover;
             color: white;
-            border: none;
-            cursor: pointer;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        button:hover {
-            background-color: #0056b3;
+        header h1 {
+            font-size: 48px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        /* Navigation */
+        nav {
+            background-color: #2c3e50;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+        }
+        nav ul {
+            list-style: none;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        nav ul li a:hover {
+            color: #3498db;
+        }
+        /* Sections */
+        section {
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        section p {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .project-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to My Page!</h1>
-    <p>This is my first website hosted on GitHub.io. Feel free to explore!</p>
-    <button onclick="alert('Hello! Thanks for clicking!')">Click Me</button>
+    <header>
+        <h1>[Your Name] - Data Scientist</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hi, I'm [Your Name], a passionate data scientist with expertise in machine learning, data visualization, and statistical analysis. I turn raw data into actionable insights to solve real-world problems.</p>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects">
+            <div class="project-card">
+                <h3>Predictive Sales Model</h3>
+                <p>Built a machine learning model to forecast sales trends using Python and scikit-learn. Achieved 90% accuracy.</p>
+            </div>
+            <div class="project-card">
+                <h3>Data Dashboard</h3>
+                <p>Created an interactive dashboard with Tableau to visualize customer behavior for a retail client.</p>
+            </div>
+            <div class="project-card">
+                <h3>NLP Sentiment Analysis</h3>
+                <p>Developed a natural language processing tool to analyze sentiment in social media posts using NLTK.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: [your.email@example.com]</p>
+        <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" style="color: #3498db;">linkedin.com/in/yourprofile</a></p>
+        <p>GitHub: <a href="https://github.com/yourusername" style="color: #3498db;">github.com/yourusername</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 [Your Name]. All rights reserved.</p>
+    </footer>
 </body>
 </html>
