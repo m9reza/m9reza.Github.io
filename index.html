@@ -3,194 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Scientist Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        body {
-            line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f4;
-            overflow-x: hidden;
-        }
-        /* Parallax Header */
-        header {
-            position: relative;
-            height: 500px;
-            background: url('https://raw.githubusercontent.com/reza69i/reza69i.github.io/main/img/back.jpg') no-repeat center/cover fixed;
-            color: white;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        header::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3); /* Overlay for contrast */
-        }
-        header h1 {
-            font-size: 50px;
-            z-index: 1;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
-            animation: fadeIn 2s ease-in;
-        }
-        /* Navigation */
-        nav {
-            background-color: #1a252f;
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-        nav ul {
-            list-style: none;
-            text-align: center;
-        }
-        nav ul li {
-            display: inline;
-            margin: 0 20px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            transition: color 0.3s;
-        }
-        nav ul li a:hover {
-            color: #00b4d8;
-        }
-        /* Sections */
-        section {
-            padding: 60px 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        section h2 {
-            font-size: 36px;
-            margin-bottom: 25px;
-            color: #1a252f;
-            text-align: center;
-        }
-        section p {
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-        /* Projects with Animation */
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-        .project-card {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-        }
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(0, 180, 216, 0.1), transparent);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .project-card:hover::before {
-            opacity: 1;
-        }
-        /* Techy Background Effect */
-        .background-effect {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://via.placeholder.com/1920x1080?text=Tech+Pattern') repeat;
-            opacity: 0.05;
-            z-index: -1;
-        }
-        /* Footer */
-        footer {
-            background-color: #1a252f;
-            color: white;
-            text-align: center;
-            padding: 25px;
-            margin-top: 60px;
-            position: relative;
-        }
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-    </style>
+    <title id="page-title"></title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="background-effect"></div>
-    <header>
-        <h1>m.reza asgari - Data Scientist</h1>
-    </header>
+    <canvas id="comet-canvas" aria-hidden="true"></canvas>
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
 
-    <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Hi, I'm m.reza, a data scientist with a passion for uncovering insights through data. I specialize in machine learning, data visualization, and statistical modeling, delivering solutions that drive impact.</p>
-    </section>
-
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="projects">
-            <div class="project-card">
-                <h3>Predictive Sales Model</h3>
-                <p>Developed a machine learning model using Python and TensorFlow to predict sales with 92% accuracy.</p>
-            </div>
-            <div class="project-card">
-                <h3>Data Visualization Dashboard</h3>
-                <p>Designed an interactive dashboard with D3.js and Plotly to visualize real-time market trends.</p>
-            </div>
-            <div class="project-card">
-                <h3>Text Mining Pipeline</h3>
-                <p>Built an NLP pipeline with spaCy to extract insights from unstructured text data.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>telegram: <a href="https://t.me/BrainMtrx" style="color: #00b4d8;">Link</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/mohammadreza-a-b32a3688/" style="color: #00b4d8;">Link</a></p>
-        <p>GitHub: <a href="https://github.com/reza69i" style="color: #00b4d8;">Link</a></p>
-    </section>
-
-    <footer>
-        <p>© 2025 [Your Name]. All rights reserved.</p>
-    </footer>
+    <div class="container">
+        <header role="banner">
+            <h1 class="typing-effect"></h1>
+            <p class="tagline" id="tagline"></p>
+        </header>
+        <section id="about" role="region" aria-labelledby="about-heading">
+            <h2 id="about-heading"></h2>
+            <p id="about-description"></p>
+        </section>
+        <section id="projects" role="region" aria-labelledby="projects-heading">
+            <h2 id="projects-heading"></h2>
+            <div class="project-grid" id="project-grid"></div>
+        </section>
+        <section id="contact" role="region" aria-labelledby="contact-heading">
+            <h2 id="contact-heading"></h2>
+            <p id="contact-email"><span id="email-label"></span> <a id="email-link" href=""></a></p>
+            <button class="launch-btn" id="contact-button"></button>
+        </section>
+        <section id="transmission" role="region" aria-labelledby="transmission-heading">
+            <h2 id="transmission-heading"></h2>
+            <textarea id="message-input" aria-label="Message input"></textarea>
+            <button id="send-btn"></button>
+            <button id="clear-log-btn"></button>
+            <div id="message-log" aria-live="polite"></div>
+        </section>
+    </div>
+    <script src="content.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
