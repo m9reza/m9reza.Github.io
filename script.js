@@ -273,14 +273,18 @@ sendBtn.addEventListener("click", async () => {
         localStorage.setItem("transmissions", JSON.stringify(messages));
         messageInput.value = "";
 
-        // Send to Telegram via Vercel (replace with your endpoint)
+        // Send to Telegram via Vercel
         try {
-            const response = await fetch('https://telegram-backend-fnyqjplbg-m9rezas-projects.vercel.app/api/telegram', {
+            const response = await fetch('https://telegram-backend-5zlxci8dj-m9rezas-projects.vercel.app/api/telegram', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ message: msg }),
             });
-            if (!response.ok) console.error('Failed to send to Telegram');
+            if (!response.ok) {
+                console.error('Failed to send to Telegram:', response.statusText);
+            } else {
+                console.log('Message sent to Telegram successfully');
+            }
         } catch (error) {
             console.error('Error sending to Telegram:', error);
         }
