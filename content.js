@@ -13,7 +13,7 @@ const siteConfig = {
         showAbout: true,
         showProjects: true,
         showContact: true,
-        showTransmission: true,
+        showTransmission: false,
     },
 };
 
@@ -31,7 +31,7 @@ const siteContent = {
                 title: "FlashUSDT",
                 description: "This project deploys a custom ERC-20 token called \"Flash USDT\" (FUSDT) on the Ethereum Sepolia testnet. It mints 1,000,000 FUSDT to the deployer's wallet.",
                 link: "https://github.com/m9reza/FlashUSDT",
-                image: "images/flashusdt.png" // Placeholder; replace with real image
+                image: "images/flashusdt.png"
             },
             {
                 title: "Multi Currency Seed Finder",
@@ -64,12 +64,5 @@ const siteContent = {
         telegramLabel: "Telegram:",
         telegram: "https://t.me/m69reza",
         buttonText: "Initiate Contact"
-    },
-    transmission: {
-        heading: "Transmission Log",
-        placeholder: "Enter your transmission...",
-        sendButton: "Send Signal",
-        clearButton: "Clear Log",
-        messagePrefix: "[Incoming Signal]:"
     }
 };

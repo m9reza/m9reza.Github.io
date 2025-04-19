@@ -1,10 +1,3 @@
-// Sanitize user input to prevent XSS
-function sanitizeInput(input) {
-    const div = document.createElement('div');
-    div.textContent = input;
-    return div.innerHTML.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-}
-
 // Populate Page with Content
 document.getElementById("page-title").textContent = `${siteContent.pilotName} | Portfolio`;
 document.getElementById("tagline").textContent = siteContent.tagline;
@@ -16,10 +9,6 @@ document.getElementById("telegram-label").textContent = siteContent.contact.tele
 document.getElementById("telegram-link").textContent = siteContent.contact.telegram;
 document.getElementById("telegram-link").href = siteContent.contact.telegram;
 document.getElementById("contact-button").textContent = siteContent.contact.buttonText;
-document.getElementById("transmission-heading").textContent = siteContent.transmission.heading;
-document.getElementById("message-input").placeholder = siteContent.transmission.placeholder;
-document.getElementById("send-btn").textContent = siteContent.transmission.sendButton;
-document.getElementById("clear-log-btn").textContent = siteContent.transmission.clearButton;
 
 // Contact button opens Telegram
 document.getElementById("contact-button").addEventListener("click", () => {
@@ -81,7 +70,6 @@ sections.forEach((section) => observer.observe(section));
 const cometCanvas = document.getElementById("comet-canvas");
 const cometCtx = cometCanvas.getContext("2d");
 let comets = [];
-let animationsEnabled = true;
 
 function resizeCanvas(canvas) {
     canvas.width = window.innerWidth;
@@ -159,7 +147,6 @@ function drawComet(comet) {
 }
 
 function animateComets() {
-    if (!animationsEnabled) return;
     setTimeout(() => {
         cometCtx.clearRect(0, 0, cometCanvas.width, cometCanvas.height);
         if (Math.random() < siteConfig.animations.cometSpawnRate) comets.push(createComet());
@@ -221,7 +208,6 @@ setInterval(() => {
 }, 200);
 
 function animateParticles() {
-    if (!animationsEnabled) return;
     setTimeout(() => {
         particleCtx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
         for (let i = particles.length - 1; i >= 0; i--) {
@@ -241,63 +227,3 @@ function animateParticles() {
     }, 16);
 }
 animateParticles();
-
-// Animation Toggle
-const animationSwitch = document.getElementById("animation-switch");
-animationSwitch.addEventListener("change", () => {
-    animationsEnabled = animationSwitch.checked;
-    cometCanvas.style.display = animationsEnabled ? "block" : "none";
-    particleCanvas.style.display = animationsEnabled ? "block" : "none";
-});
-
-// Transmission Log
-const messageInput = document.getElementById("message-input");
-const sendBtn = document.getElementById("send-btn");
-const clearLogBtn = document.getElementById("clear-log-btn");
-const messageLog = document.getElementById("message-log");
-
-let messages = JSON.parse(localStorage.getItem("transmissions")) || [];
-if (messages.length > 10) messages = messages.slice(-10);
-if (messages.length === 0) {
-    messageLog.innerHTML = "<p>[System]: No previous transmissions found.</p>";
-} else {
-    messages.forEach(msg => addMessage(msg));
-}
-
-sendBtn.addEventListener("click", async () => {
-    const msg = sanitizeInput(messageInput.value.trim());
-    if (msg) {
-        addMessage(msg);
-        messages.push(msg);
-        if (messages.length > 10) messages.shift();
-        localStorage.setItem("transmissions", JSON.stringify(messages));
-        messageInput.value = "";
-
-        // Send to Telegram via Vercel (replace with your endpoint)
-        try {
-            const response = await fetch('https://telegram-backend-r90omw2c3-m9rezas-projects.vercel.app', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message: msg }),
-            });
-            if (!response.ok) console.error('Failed to send to Telegram');
-        } catch (error) {
-            console.error('Error sending to Telegram:', error);
-        }
-    }
-});
-
-clearLogBtn.addEventListener("click", () => {
-    messages = [];
-    localStorage.removeItem("transmissions");
-    messageLog.innerHTML = "<p>[System]: Transmission log cleared.</p>";
-});
-
-function addMessage(msg) {
-    const div = document.createElement("div");
-    div.className = "message";
-    const timestamp = new Date().toLocaleTimeString();
-    div.textContent = `${siteContent.transmission.messagePrefix} [${timestamp}] ${msg}`;
-    messageLog.appendChild(div);
-    messageLog.scrollTop = messageLog.scrollHeight;
-}
