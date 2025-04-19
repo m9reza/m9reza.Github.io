@@ -275,7 +275,7 @@ sendBtn.addEventListener("click", async () => {
 
         // Send to Telegram via Vercel (replace with your endpoint)
         try {
-            const response = await fetch('https://your-vercel-app.vercel.app/api/telegram', {
+            const response = await fetch('https://telegram-backend-r90omw2c3-m9rezas-projects.vercel.app', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ message: msg }),
