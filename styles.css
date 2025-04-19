@@ -44,6 +44,17 @@ header {
     padding: 40px 0;
 }
 
+.animation-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: var(--primary-color);
+}
+
+.animation-toggle input {
+    accent-color: var(--primary-color);
+}
+
 .typing-effect {
     font-size: 2.5em;
     border-right: 2px solid var(--primary-color);
@@ -62,7 +73,14 @@ section {
     padding: 20px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.5s ease, transform 0.5s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 section:hover {
@@ -100,6 +118,19 @@ h2 {
     text-decoration: none;
 }
 
+#contact {
+    background: rgba(147, 112, 219, 0.2);
+    border: 2px solid #00FFFF;
+}
+
+#contact h2 {
+    color: #00FFFF;
+}
+
+#contact a {
+    color: #00FFFF;
+}
+
 .launch-btn, #send-btn, #clear-log-btn {
     background: var(--primary-color);
     color: var(--background-color);
@@ -109,6 +140,16 @@ h2 {
     cursor: pointer;
     transition: background 0.3s;
     margin-top: 10px;
+}
+
+#contact .launch-btn {
+    background: #00FFFF;
+    color: #0a0a23;
+}
+
+#contact .launch-btn:hover {
+    background: #9370DB;
+    color: #fff;
 }
 
 .launch-btn:hover, #send-btn:hover, #clear-log-btn:hover {
@@ -138,4 +179,36 @@ h2 {
     padding: 10px;
     margin: 5px 0;
     border-left: 3px solid var(--primary-color);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.social-links a {
+    color: var(--primary-color);
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .typing-effect {
+        font-size: 1.8em;
+    }
+    .container {
+        padding: 10px;
+    }
+    .animation-toggle {
+        top: 10px;
+        right: 10px;
+        font-size: 0.9em;
+    }
 }
