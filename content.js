@@ -62,7 +62,7 @@ const siteContent = {
     contact: {
         heading: "Contact:",
         telegramLabel: "Telegram:",
-        telegram: "https://t.me/m9reza0o0",
+        telegram: "https://t.me/m9reza",
         buttonText: "Initiate Contact"
     }
 };
